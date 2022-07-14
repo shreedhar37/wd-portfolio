@@ -1,0 +1,19 @@
+html {
+  max-width: 500px;
+  margin: auto;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+a {
+  margin-right: 10px;
+  color: white;
+}
+
+button,
+input,
+textarea {
+  border-radius: 1rem;
+}
