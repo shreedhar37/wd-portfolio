@@ -8,7 +8,6 @@ if (userEntries) {
 
 // saving data in localstorage
 const saveUserForm = (event) => {
-  event.preventDefault();
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -16,19 +15,44 @@ const saveUserForm = (event) => {
   const acceptTermsAndConditions =
     document.getElementById("acceptTerms").checked;
 
-  if (acceptTermsAndConditions === true) acceptTermsAndConditions = "accepted";
-  else acceptTermsAndConditions = "not accepted";
+  let acceptTnc;
 
-  const userDetails = {
-    name,
-    email,
-    password,
-    dob,
-    acceptTermsAndConditions,
-  };
-  userEntries.push(userDetails);
-  localStorage.setItem("user-entries", JSON.stringify(userEntries));
-  displayEntries();
+  if (acceptTermsAndConditions === true) acceptTnc = "accepted";
+  else acceptTnc = "not accepted";
+
+  let errors = [];
+
+  if (password.length < 8) {
+    errors.push("Password must be atleast 8 characters long !!!");
+  }
+
+  if (password.length > 16) {
+    errors.push("Password can't be longer than 16 characters long !!");
+  }
+
+  let currentYear = parseInt(new Date().getFullYear());
+  let userDobYear = parseInt(dob.slice(0, 4));
+
+  if (currentYear - userDobYear < 18 || currentYear - userDobYear > 55) {
+    errors.push("Your age need to be between 18 to 55 years old !! ");
+  }
+
+  // check for any errors in form
+  if (errors.length <= 0) {
+    const userDetails = {
+      name,
+      email,
+      password,
+      dob,
+      acceptTnc,
+    };
+    userEntries.push(userDetails);
+    localStorage.setItem("user-entries", JSON.stringify(userEntries));
+  } else {
+    event.preventDefault();
+    alert(errors.join(","));
+    errors = [];
+  }
 };
 
 // adding Eventlistener
@@ -48,7 +72,7 @@ const displayEntries = () => {
         const email = `<td>${entry.email}</td>`;
         const password = `<td>${entry.password}</td>`;
         const dob = `<td>${entry.dob}</td>`;
-        const acceptTerms = `<td>${entry.acceptTermsAndConditions}</td>`;
+        const acceptTerms = `<td>${entry.acceptTnc}</td>`;
         const row = `<tr>${name} ${email} ${password} ${dob} ${acceptTerms}</tr>`;
         return row;
       })
@@ -64,3 +88,5 @@ const displayEntries = () => {
   let details = document.getElementById("user-entries");
   details.innerHTML = table;
 };
+
+displayEntries();
