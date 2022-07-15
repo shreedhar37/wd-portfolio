@@ -4,7 +4,7 @@
     <meta name="content" width="device-width, initial-scale" />
     <title>Shreedhar Chavan</title>
     <link rel="stylesheet" href="main.css" />
-    <link defer src="main.js" />
+    <script defer src="main.js"></script>
   </head>
   <body>
     <div class="content">
@@ -17,7 +17,7 @@
       <main>
         <h2 style='margin-left:8rem;'>Survey Form</h2>
         <br />
-        <form>
+        <form id="user_form">
           <label for="name"> Name : </label>
           <input
             type="text"
@@ -49,30 +49,14 @@
           <input type="date" id="dob" name="dob" required />
           <br /><br />
           
-          <input type="checkbox" id="checkbox" name="checkbox" />
-          <label for="checkbox"><small>I have accepted the terms and condition</small></label>
+          <input type="checkbox" id="acceptTerms" name="checkbox" />
+          <label for="acceptTerms"><small>I have accepted the terms and condition</small></label>
           <br /><br />
-          <button class="btn-submit" type="submit">Submit</button>
+          <input class="btn-submit"  type="submit" value="Submit">
         </form>
         </div>
-      </main>
+      <div id="user-entries"></div>
+    </main>
     </div>
-    <div class="survey-table">
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>Birth Date</th>
-          <th>T&C</th>
-        </tr>
-        <tr>
-          <td>Shreedhar Chavan</td>
-          <td>shree@gmail.com</td>
-          <td>adassdsa</td>
-          <td>dd-mm-yyyy</td>
-          <td>accepted</td>
-        </tr>
-      </table>
   </body>
 </html>
