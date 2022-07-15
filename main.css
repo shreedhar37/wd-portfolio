@@ -1,19 +1,50 @@
-html {
+/* html {
+  max-width: 500px;
+  margin: auto;
+} */
+
+.content {
   max-width: 500px;
   margin: auto;
 }
-
-body {
-  background-color: black;
-  color: white;
-}
 a {
-  margin-right: 10px;
-  color: white;
+  text-decoration: none;
 }
 
 button,
 input,
 textarea {
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+}
+
+.btn-submit {
+  height: 30px;
+  margin-left: 13rem;
+  margin-top: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  height: 30px;
+  width: 450px;
+  margin-top: 1rem;
+}
+
+.survey-table {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px dotted black;
+  text-align: center;
+  width: 1000px;
+  margin: auto;
+}
+
+nav {
+  margin-left: 6rem;
 }
