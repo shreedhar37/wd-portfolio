@@ -39,7 +39,7 @@ input[type="password"] {
 table,
 th,
 td {
-  border: 1px dotted black;
+  border: 1px dotted green;
   text-align: center;
   width: 1000px;
   margin: auto;
