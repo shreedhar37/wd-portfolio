@@ -8,6 +8,7 @@ if (userEntries) {
 
 // saving data in localstorage
 const saveUserForm = (event) => {
+  event.preventDefault();
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const dob = document.getElementById("dob").value;
@@ -20,39 +21,37 @@ const saveUserForm = (event) => {
   if (acceptTermsAndConditions === true) acceptTnc = "accepted";
   else acceptTnc = "not accepted";
 
-  let errors = [];
-
-  let currentYear = parseInt(new Date().getFullYear());
-  let userDobYear = parseInt(dob.slice(0, 4));
-
-  if (currentYear - userDobYear < 18 || currentYear - userDobYear > 55) {
-    errors.push("Your age need to be between 18 to 55 years old !! ");
-  }
-
-  // check for any errors in form
-  if (errors.length <= 0) {
-    const userDetails = {
-      name,
-      email,
-      dob,
-      acceptTnc,
-      message,
-    };
-    userEntries.push(userDetails);
-    localStorage.setItem("user-entries", JSON.stringify(userEntries));
-  } else {
-    event.preventDefault();
-    alert(errors.join(","));
-    errors = [];
-  }
+  const userDetails = {
+    name,
+    email,
+    dob,
+    acceptTnc,
+    message,
+  };
+  userEntries.push(userDetails);
+  localStorage.setItem("user-entries", JSON.stringify(userEntries));
+  dob.setCustomValidity("");
 };
 
 // adding Eventlistener
 let form = document.getElementById("user_form");
 form.addEventListener("submit", saveUserForm, true);
 
-// display the localstorage
+// date validation
+const dob = document.getElementById("dob");
+dob.addEventListener("input", function (event) {
+  let currentYear = parseInt(new Date().getFullYear());
+  let userDobYear = parseInt(dob.value.slice(0, 4));
 
+  if (currentYear - userDobYear < 18 || currentYear - userDobYear > 55) {
+    dob.setCustomValidity("Your age need to be between 18 to 55 years old !! ");
+    dob.reportValidity();
+  } else {
+    dob.setCustomValidity("");
+  }
+});
+
+// display the localstorage
 const displayEntries = () => {
   const savedUserEntries = localStorage.getItem("user-entries");
   let entries = "";
@@ -65,7 +64,7 @@ const displayEntries = () => {
         const dob = `<td>${entry.dob}</td>`;
         const acceptTerms = `<td>${entry.acceptTnc}</td>`;
         const message = `<td>${entry.message}</td>`;
-
+        const action = `<td><button id='action' onclick='delete()'> Delete </button> </td>`;
         const row = `<tr>${name} ${email}  ${dob} ${acceptTerms} ${message}</tr>`;
         return row;
       })

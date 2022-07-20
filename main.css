@@ -13,7 +13,8 @@ a {
 
 button,
 input,
-textarea {
+textarea,
+.checkbox {
   border-radius: 0.5rem;
 }
 
@@ -47,4 +48,22 @@ td {
 
 nav {
   margin-left: 6rem;
+}
+
+input[type="date"] {
+  background-color: grey;
+}
+input:invalid,
+textarea {
+  border: 1px solid red;
+}
+
+input:valid {
+  border: 1px solid rgb(177, 236, 0);
+}
+
+input,
+textarea {
+  background-color: black;
+  color: rgb(177, 236, 0);
 }

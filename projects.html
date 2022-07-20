@@ -24,6 +24,7 @@
             id="name"
             name="name"
             placeholder="John Doe"
+            minlength="3"
             maxlength="50"
             required
           />
@@ -34,16 +35,19 @@
             id="email"
             name="email"
             placeholder="johndoe@gmail.com"
+            minlength="5"
+            maxlength="50"
             required
+            
           /><br /><br /><br>
           <label for="dob">Date of Birth : </label>
           <input type="date" id="dob" name="dob" required />
           <br /><br /><br>
           <label for="message">Message: </label>
           <br><br>
-          <textarea id="message" name="message" rows="10" cols="65"></textarea>
+          <textarea id="message" name="message" rows="10" cols="65" minlength="1" maxlength="100" required></textarea>
           <br><br>
-          <input type="checkbox" id="acceptTerms" name="checkbox" />
+          <input type="checkbox" id="acceptTerms" name="checkbox"/>
           <label for="acceptTerms"><small>I have accepted the terms and condition</small></label>
           <br /><br />
           <input class="btn-submit"  type="submit" value="Submit">
