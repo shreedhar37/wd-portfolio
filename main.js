@@ -8,7 +8,6 @@ if (userEntries) {
 
 // saving data in localstorage
 const saveUserForm = (event) => {
-  event.preventDefault();
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const dob = document.getElementById("dob").value;
@@ -30,7 +29,6 @@ const saveUserForm = (event) => {
   };
   userEntries.push(userDetails);
   localStorage.setItem("user-entries", JSON.stringify(userEntries));
-  dob.setCustomValidity("");
 };
 
 // adding Eventlistener
@@ -73,8 +71,8 @@ const displayEntries = () => {
   var table = `<table border='1' width='100%'><tr>
       <th>Name</th>
       <th>Email</th>
-      <th>dob</th>
-      <th>accepted terms?</th>
+      <th>Date of birth</th>
+      <th>Terms and Conditions</th>
       <th>Message</th>
     </tr>${entries} </table>`;
   let details = document.getElementById("user-entries");
