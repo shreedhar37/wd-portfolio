@@ -1,3 +1,19 @@
+// set max attribute for date
+let dateOfBirth = document.getElementById("dob");
+let today = new Date();
+let month = today.getMonth();
+let fullYear = today.getFullYear();
+let date = today.getDate();
+
+// check for single digit
+if (month < 10) month = "0" + month;
+console.log(month);
+
+today = fullYear + "-" + month + "-" + date;
+
+//set max attribute
+dateOfBirth.setAttribute("max", today);
+
 // check for existing entries
 let userEntries = localStorage.getItem("user-entries");
 if (userEntries) {
