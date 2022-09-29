@@ -1,1 +1,1 @@
-https://shreedhar37.github.io/wd-portfolio/index.html
+https://shreedhar37.github.io/wd-portfolio/projects.html
